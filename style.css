@@ -1,0 +1,279 @@
+/* ====================================================
+   1. CÀI ĐẶT CHUNG (GLOBAL STYLES)
+==================================================== */
+
+/* Tạo hiệu ứng cuộn trang mượt mà khi bấm vào các liên kết neo (anchor links) */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ====================================================
+   2. THANH ĐIỀU HƯỚNG (NAVBAR)
+==================================================== */
+
+/* Tuỳ chỉnh màu nền thanh menu (xanh dương đục 90%) kèm hiệu ứng làm mờ nền đằng sau (blur) */
+.custom-navbar {
+    background-color: rgba(13, 110, 253, 0.9) !important; /* Màu xanh lá/dương đục nhẹ */
+    backdrop-filter: blur(10px);                           /* Hiệu ứng làm mờ kính sương */
+    transition: all 0.3s ease;                              /* Chuyển động mượt khi thay đổi thuộc tính */
+}
+
+/* Đặt vị trí tương đối cho liên kết menu để làm mốc cho đường gạch chân hover */
+.nav-link {
+    position: relative;          /* Làm mốc định vị cho phần tử giả ::after */
+    transition: color 0.3s ease; /* Chuyển màu chữ mượt mà */
+}
+
+/* Tạo đường gạch chân màu vàng nằm ẩn bên dưới mỗi liên kết menu */
+.nav-link::after {
+    content: '';                     /* Tạo phần tử giả rỗng */
+    position: absolute;              /* Định vị tuyệt đối theo .nav-link */
+    width: 0;                        /* Ban đầu độ rộng bằng 0 (ẩn đi) */
+    height: 2px;                     /* Độ dày đường gạch chân 2px */
+    bottom: 2px;                     /* Cách đáy liên kết 2px */
+    left: 50%;                       /* Căn giữa theo chiều ngang */
+    background-color: #ffc107;       /* Màu gạch chân (màu vàng nhạt) */
+    transition: all 0.3s ease;       /* Mở rộng đường gạch mượt mà */
+    transform: translateX(-50%);     /* Căn đều hai bên từ tâm ra */
+}
+
+/* Khi di chuột vào liên kết menu thì đường gạch chân mở rộng ra 70% độ rộng chữ */
+.nav-link:hover::after {
+    width: 70%; /* Mở rộng chiều dài gạch chân thành 70% */
+}
+
+/* Định dạng ô nhập liệu tìm kiếm: Bo góc tròn bên trái, bỏ viền mặc định */
+.search-input {
+    border-radius: 20px 0 0 20px; /* Bo tròn góc trên-trái và dưới-trái */
+    border: none;                 /* Bỏ đường viền quanh ô nhập */
+    padding-left: 15px;           /* Khoảng cách lề trong bên trái */
+    font-size: 0.9rem;            /* Kích thước chữ nhỏ gọn */
+}
+
+/* Định dạng nút bấm tìm kiếm: Màu vàng, bo góc tròn bên phải */
+.search-btn {
+    border-radius: 0 20px 20px 0; /* Bo tròn góc trên-phải và dưới-phải */
+    border: none;                 /* Bỏ đường viền */
+    background-color: #ffc107;   /* Màu nền vàng nổi bật */
+    color: #212529;               /* Màu chữ đen đậm */
+    font-weight: 600;             /* Đăng độ đậm chữ */
+    font-size: 0.9rem;            /* Kích thước chữ */
+}
+
+/* Hiệu ứng đổi màu nền tối hơn một chút khi di chuột vào nút tìm kiếm */
+.search-btn:hover {
+    background-color: #e0a800; /* Đổi sang màu vàng đậm hơn */
+    color: #212529;           /* Giữ nguyên màu chữ */
+}
+
+
+/* ====================================================
+   3. BANNER CHÍNH (HERO SECTION)
+==================================================== */
+
+/* Định dạng khu vực banner đầu trang: Ảnh nền biển có phủ lớp màu tối, chữ trắng căn giữa */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') no-repeat center center; /* Phủ màng đen đục và ảnh nền */
+    background-size: cover;          /* Phủ kín toàn bộ khung banner */
+    color: white;                    /* Màu chữ trắng */
+    padding: 120px 0 150px 0;        /* Khoảng cách đệm trên 120px, dưới 150px */
+    text-align: center;              /* Căn giữa toàn bộ văn bản */
+}
+
+/* Tạo bóng đổ cho nút bấm tùy chỉnh */
+.btn-custom {
+    transition: all 0.3s ease;                  /* Chuyển động mượt mà */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);     /* Bóng đổ mờ nhẹ dưới nút */
+}
+
+/* Hiệu ứng nổi nút lên trên và tăng độ đậm bóng đổ khi rê chuột */
+.btn-custom:hover {
+    transform: translateY(-3px);                /* Dịch chuyển nút lên trên 3px */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);     /* Tăng độ lan tỏa bóng đổ */
+}
+
+
+/* ====================================================
+   4. THẺ NỔI BẬT (FEATURE CARDS)
+==================================================== */
+
+/* Kiểu dáng thẻ đặc điểm nổi bật nằm đè nhẹ lên ảnh banner */
+.feature-card {
+    border: none;                                                        /* Bỏ viền thẻ */
+    border-radius: 16px;                                                 /* Bo tròn góc 16px */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);                            /* Tạo bóng đổ nhẹ xung quanh */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);        /* Hiệu ứng nảy (bounce) khi hover */
+    margin-top: -60px;                                                   /* Kéo thẻ nhô lên trên đè vào banner 60px */
+    background: white;                                                   /* Nền thẻ màu trắng */
+    min-height: 280px;                                                   /* Chiều cao tối thiểu đồng đều 280px */
+}
+
+/* Hiệu ứng nhô cao và tạo bóng màu xanh dương khi di chuột vào thẻ đặc điểm */
+.feature-card:hover {
+    transform: translateY(-10px);                                       /* Nâng thẻ lên 10px */
+    box-shadow: 0 20px 35px rgba(13, 110, 253, 0.15);                   /* Bóng đổ hắt màu xanh nổi bật */
+}
+
+/* Giãn khoảng cách dòng cho đoạn văn bên trong thẻ đặc điểm */
+.feature-card p {
+    line-height: 1.6; /* Giãn cách giữa các dòng chữ dễ đọc hơn */
+}
+
+
+/* ====================================================
+   5. BỐ CỤC KHUNG CHỨA BÊN TRONG (SECTION BOX)
+==================================================== */
+
+/* Khung nền xám nhạt bo tròn dùng để bao bọc các phần nội dung */
+.section-box {
+    background: #f8fafc;                       /* Nền xám xanh cực nhẹ */
+    border-radius: 20px;                       /* Bo tròn góc khung 20px */
+    padding: 40px;                             /* Khoảng cách đệm bên trong 40px */
+    border: 1px solid #e2e8f0;                 /* Đường viền mỏng màu xám nhạt */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);    /* Bóng đổ rất nhẹ */
+}
+
+/* Định dạng tiêu đề chính của các phần (Section Title) */
+.section-title {
+    font-weight: 800;       /* Chữ in đậm nổi bật */
+    color: #0d6efd;         /* Màu xanh chủ đạo của trang */
+    letter-spacing: -0.5px; /* Sát khoảng cách các chữ cái một chút */
+}
+
+
+/* ====================================================
+   6. CÁC THẺ ĐIỂM ĐẾN (DESTINATION CARDS)
+==================================================== */
+
+/* Kiểu dáng thẻ danh thắng/địa điểm du lịch */
+.card-destination {
+    border: none;                            /* Bỏ đường viền thẻ */
+    border-radius: 14px;                     /* Bo tròn góc 14px */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06); /* Bóng đổ nhẹ quanh thẻ */
+    overflow: hidden;                        /* Ẩn phần thừa ra ngoài khi ảnh phóng to */
+    transition: all 0.3s ease;               /* Hiệu ứng chuyển động mượt */
+    background: #ffffff;                     /* Màu nền trắng */
+}
+
+/* Hiệu ứng nổi lên khi rê chuột vào thẻ điểm đến */
+.card-destination:hover {
+    transform: translateY(-8px);             /* Nâng thẻ lên 8px */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12); /* Tăng bóng đổ bên dưới */
+}
+
+/* Khung bọc ảnh hỗ trợ hiệu ứng phóng to hình ảnh */
+.img-zoom-container {
+    overflow: hidden;   /* Cắt phần ảnh bị thừa ra ngoài khung khi zoom */
+    position: relative; /* Giữ ảnh định vị bên trong */
+}
+
+/* Cài đặt thời gian biến đổi phóng to ảnh */
+.img-zoom-container img {
+    transition: transform 0.5s ease; /* Ảnh phóng to dần trong 0.5 giây */
+}
+
+/* Phóng to ảnh thêm 8% khi di chuột vào thẻ điểm đến hoặc thẻ khách sạn */
+.card-destination:hover .img-zoom-container img,
+.card-hotel:hover .img-zoom-container img {
+    transform: scale(1.08); /* Phóng to kích thước ảnh lên 1.08 lần */
+}
+
+
+/* ====================================================
+   7. PHẦN ẨM THỰC (FOOD SECTION)
+==================================================== */
+
+/* Hiệu ứng phóng to nhẹ và đổ bóng đậm cho hình ảnh ẩm thực */
+.food-img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Chuyển đổi hiệu ứng mượt */
+}
+
+/* Khi di chuột vào ảnh món ăn thì ảnh nhích nhẹ và nổi bóng đệm */
+.food-img:hover {
+    transform: scale(1.02);                               /* Phóng to nhẹ 2% */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;  /* Tăng độ đậm của bóng */
+}
+
+
+/* ====================================================
+   8. THẺ KHÁCH SẠN VÀ ĐÁNH GIÁ (HOTEL & TESTIMONIAL CARDS)
+==================================================== */
+
+/* Thiết kế chung cho thẻ khách sạn và thẻ đánh giá của khách hàng */
+.card-hotel, .card-testimonial {
+    border: 1px solid #e2e8f0;                 /* Đường viền mỏng xám */
+    border-radius: 14px;                       /* Bo góc tròn 14px */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);/* Tạo bóng mờ nhẹ */
+    background: #ffffff;                       /* Màu nền trắng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Chuyển động mượt */
+}
+
+/* Hiệu ứng nổi nhẹ khi di chuột vào thẻ khách sạn hoặc đánh giá */
+.card-hotel:hover, .card-testimonial:hover {
+    transform: translateY(-5px);               /* Nhấc thẻ lên 5px */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);/* Tăng bóng hắt mờ */
+}
+
+/* Định dạng màu vàng kim và khoảng cách cho biểu tượng sao đánh giá */
+.star-rating {
+    color: #ffc107;      /* Màu sao đánh giá vàng nổi bật */
+    letter-spacing: 2px; /* Giãn cách giữa các ngôi sao 2px */
+}
+
+/* Định dạng chữ hiển thị giá tiền khách sạn */
+.price-text {
+    color: #dc3545;     /* Màu chữ đỏ cảnh báo/nổi bật giá */
+    font-weight: 700;   /* Đột đậm chữ cao */
+    font-size: 1.1rem;  /* Kích thước chữ giá tiền lớn vừa phải */
+}
+
+/* Định dạng ảnh đại diện avatar tròn của người đánh giá */
+.avatar-img {
+    width: 90px;         /* Chiều rộng ảnh 90px */
+    height: 90px;        /* Chiều cao ảnh 90px */
+    object-fit: cover;   /* Cắt ảnh tỉ lệ chuẩn không bị méo */
+    border-radius: 50%;  /* Bo tròn thành hình tròn hoàn toàn */
+}
+
+
+/* ====================================================
+   9. CHÂN TRANG (FOOTER)
+==================================================== */
+
+/* Màu nền tối và khoảng cách đệm cho phần footer */
+.footer-custom {
+    background-color: #0f172a; /* Màu nền xanh đen đậm (Dark Slate) */
+    color: #ffffff;            /* Màu chữ mặc định trắng */
+    padding: 60px 0 25px 0;    /* Đệm trên 60px, đệm dưới 25px */
+}
+
+/* Định dạng tiêu đề cột ở chân trang */
+.footer-custom h5 {
+    color: #ffffff;   /* Tiêu đề chữ màu trắng */
+    font-weight: 700; /* In đậm tiêu đề */
+}
+
+/* Định dạng văn bản thông tin liên hệ */
+.footer-custom p {
+    color: #cbd5e1; /* Chữ xám sáng nhẹ dễ đọc trên nền tối */
+}
+
+/* Định dạng các liên kết chuyển hướng nhanh ở footer */
+.footer-custom a.footer-link {
+    color: #94a3b8;             /* Màu xám trung tính cho liên kết */
+    text-decoration: none;      /* Bỏ gạch chân mặc định của thẻ a */
+    transition: all 0.2s ease;  /* Hiệu ứng chuyển mượt */
+    display: inline-block;      /* Cho phép áp dụng dịch chuyển transform */
+}
+
+/* Hiệu ứng đổi màu xanh nhạt và đẩy nhẹ sang phải khi di chuột vào liên kết footer */
+.footer-custom a.footer-link:hover {
+    color: #38bdf8;             /* Đổi sang màu xanh da trời sáng */
+    transform: translateX(5px); /* Dịch chuyển sang phải 5px */
+}
+
+/* Định dạng thông tin bản quyền ở dưới cùng chân trang */
+.footer-copyright {
+    color: #64748b; /* Màu chữ xám tối mờ nhẹ */
+}
